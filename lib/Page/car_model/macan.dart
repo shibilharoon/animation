@@ -12,9 +12,9 @@ class Macan extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: ((context) => HomeScreen())));
+                  MaterialPageRoute(builder: ((context) => const HomeScreen())));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.white,
             )),
@@ -54,10 +54,10 @@ class Macan extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: 300,
-              child: Image.asset("Assets/images/cayenne.webp"),
+              child: Image.asset("Assets/images/maccan.webp"),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 ''' The Porsche Macan is a compact luxury crossover SUV that has been produced by Porsche since February 2014. It is the smallest SUV from Porsche, coming in below the Cayenne. ''',
                 style: TextStyle(color: Colors.white),

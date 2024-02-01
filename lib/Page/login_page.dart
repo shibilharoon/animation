@@ -1,4 +1,5 @@
-import 'package:animation/Page/home_screen.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:animation/Page/initial_page.dart';
 import 'package:animation/main.dart';
 import 'package:flutter/material.dart';
@@ -7,19 +8,26 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  @override
   final Language = ["en", "ml", "hi"];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         actions: [
           DropdownButton(
-            underline: SizedBox(),
-            icon: Icon(Icons.language),
+            underline: const SizedBox(),
+            icon: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.language,
+                color: Colors.white,
+              ),
+            ),
             items: Language.map((e) => DropdownMenuItem<String>(
-                  child: Text(e),
                   value: e,
+                  child: Text(e),
                 )).toList(),
             onChanged: (language) {
               if (language != null) {
@@ -34,7 +42,10 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.only(left: 50, right: 50, top: 30),
         child: Column(
           children: [
-            Image.asset("Assets/images/logo_porsche-removebg-preview.png"),
+            Image.asset(
+              "Assets/images/logo_porsche-removebg-preview.png",
+              height: 200,
+            ),
             TextField(
               decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.username,
@@ -43,7 +54,7 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -54,16 +65,17 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            IconButton.filled(
+            IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: ((context) => InitialPage())));
+                      MaterialPageRoute(builder: ((context) => const InitialPage())));
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
+                  color: Colors.white,
                 ))
           ],
         ),

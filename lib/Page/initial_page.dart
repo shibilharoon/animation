@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 
 import 'package:animation/Page/home_screen.dart';
@@ -13,8 +15,8 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
   double bottomPosition = 0.0;
+  double opacityValue = 1.0;
 
   @override
   void initState() {
@@ -22,23 +24,25 @@ class _InitialPageState extends State<InitialPage>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
 
-    _animation = Tween<double>(begin: 0, end: -500).animate(_controller);
 
-    Future.delayed(Duration(microseconds: 500), () {
+    Future.delayed(const Duration(microseconds: 500), () {
       setState(() {
         bottomPosition = 2000.0;
       });
     });
 
-    Timer.periodic(Duration(microseconds: 500), (timer) {
+    Timer.periodic(const Duration(microseconds: 2500), (timer) {
       setState(() {
         bottomPosition += 20.0;
         if (bottomPosition > 800) {
           bottomPosition = 2000.0;
         }
+
+        opacityValue = (bottomPosition - 800) / 1200;
+        opacityValue = opacityValue.clamp(0.0, 0.0);
       });
     });
   }
@@ -50,14 +54,14 @@ class _InitialPageState extends State<InitialPage>
       body: Stack(
         children: [
           AnimatedPositioned(
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
             curve: Curves.easeInOut,
             bottom: bottomPosition,
             child: AnimatedOpacity(
-              opacity: .6,
-              duration: Duration(seconds: 2),
+              opacity: opacityValue,
+              duration: const Duration(seconds: 2),
               child: Padding(
-                padding: EdgeInsets.only(left: 160),
+                padding: const EdgeInsets.only(left: 160),
                 child: Image.asset(
                   'Assets/images/porsche_top_view-removebg-preview.png',
                   height: 200,
@@ -66,15 +70,19 @@ class _InitialPageState extends State<InitialPage>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 330, left: 85),
+            padding: const EdgeInsets.only(top: 400, left: 85),
             child: GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => HomeScreen())));
+                    MaterialPageRoute(builder: ((context) => const HomeScreen())));
               },
-              child: Image.asset(
-                "Assets/images/logo_porsche-removebg-preview.png",
-                height: 200,
+              child: AnimatedOpacity(
+                opacity: 1.0 - opacityValue,
+                duration: const Duration(seconds: 2),
+                child: Image.asset(
+                  "Assets/images/logo_porsche-removebg-preview.png",
+                  height: 200,
+                ),
               ),
             ),
           ),

@@ -12,9 +12,9 @@ class Cayenne extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: ((context) => HomeScreen())));
+                  MaterialPageRoute(builder: ((context) => const HomeScreen())));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.white,
             )),
@@ -56,8 +56,8 @@ class Cayenne extends StatelessWidget {
               height: 300,
               child: Image.asset("Assets/images/cayenne.webp"),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 '''The Porsche Cayenne is a luxury crossover SUV that has been manufactured by Porsche since 2002. The Cayenne is available in two hybrid variants, and the price range for the Cayenne is between ₹1.36 crore and ₹1.93 crore, depending on the variant.''',
                 style: TextStyle(color: Colors.white),
