@@ -59,7 +59,7 @@ class Macan extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                ''' The Porsche Macan is a compact luxury crossover SUV that has been produced by Porsche since February 2014. It is the smallest SUV from Porsche, coming in below the Cayenne. ''',
+                '''  The Porsche Macan is a compact luxury crossover SUV that has been produced by Porsche since February 2014. It is the smallest SUV from Porsche, coming in below the Cayenne. ''',
                 style: TextStyle(color: Colors.white),
               ),
             ),
